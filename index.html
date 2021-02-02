@@ -5,66 +5,39 @@
 <title>Test Form</title>
 <meta charset="utf-8">
 
-<audio id="audioPop">
-   <source src="./audio/pop.mp3">
-</audio>
-
-<link rel="stylesheet" href="./css/buttonPush.css">
+<head>
+    <link rel="stylesheet" href="./css/index.css">
 
 </head>
 
 <body>
-    <div class="divTable">
-        <div class="divTableBody">
-            <div class="divTableRow">
-  
-                        <div class="divTableCell">&nbsp;</div>
-                        <div class="divTableCell"><button onclick="buttonOnClickRun()" class="button red round">Run</button></div>
-                        <div class="divTableCell">&nbsp;</div>
-                        <div class="divTableCell"><button onclick="buttonOnClickJump()" class="button blue round">!<!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <title>Document</title>
-                        </head>
-                        <body>
-                            
-                        </body>
-                        </html></button></div>
-            <!--code to keep-->
 
-            <!-- </div>
-            <div class="divTableRow">
-                
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell"><button onclick="buttonOnClick()" class="button red round">B</button></div>
-            </div>
-            <div class="divTableRow">
-                <div class="divTableCell">&nbsp;</div>
-                <div class="divTableCell"><button onclick="buttonOnClick()" class="button green round">A</button></div>
-            <div class="divTableCell">&nbsp;</div> -->
+    <!-- var href = window.location.href
+    href will be equal to "https://muddygames.bitbucket.io/form/index.html?enemy=boss"
+    
+    var protocol = window.location.protocol
+    protocol will be equal to "https:"
+    
+    var host = window.location.host
+    host will be equal to "muddygames.bitbucket.io"
+    
+    var pathname = window.location.pathname
+    pathname will be equal to “/form/index.html”
+    
+    var search = window.location.search 
+    search will be equal to “?enemy=boss" -->
 
-            </div>
-        </div>
-    </div>
+<form action="https://rosswalkerburke.github.io/component" method="GET" target="_blank">
 
-    <canvas tabindex="1" id="the_canvas" width="1000" height="300" style="border: black 1px solid;">
-        Oops! looks like your browser does not support canvas tag
-    </canvas>
+<!-- code to aid understanding
+<input type="text" name="q" value="pwa"> -->
 
-<form action="https://www.google.com" method="GET" target="_blank">
+<input type="text" name="username" value="username">
 
-<input type="text" name="q" value="pwa">
+<input type="password" name="password" value="password">
 
-<input type="text" name="username">
-
-<input type="password" name="password">
-
-
-
-<input type="radio" name="radiobutton" value="val1">npc<br>
-<input type="radio" name="radiobutton" value="val2">boss<br>
+<input type="radio" name="radiobutton" value="val1">Forest run<br>
+<input type="radio" name="radiobutton" value="val2">street run<br>
 
 <input type= "hidden" name="wallet" value="ross">
 
@@ -75,9 +48,39 @@
 </select>
 
 <button type="reset">reset</button>
-<button type="submit">send me to google</button>
+<button type="submit">play game</button>
 
 </form>
+
+<h1>Request Parameters</h1>
+<!--
+Commented out, you can replace action="." with action="url_to_your_game" e.g https://muddygames.bitbucket.io/game/index.html
+<form action="." method="get">
+    <input type="text" value="test" name="gamertag">
+    <button type="submit">Submit</button>
+  </form>
+    -->
+
+<script>
+function onPageLoad() {
+var href = window.location.href;
+    alert(href);
+   
+    var protocol = window.location.protocol;
+    alert(protocol);
+   
+    var host = window.location.host;
+    alert(host);
+   
+   
+    var pathname = window.location.pathname;
+    alert(pathname);
+   
+    var search = window.location.search;
+    alert(search);
+   
+}
+</script>
 
 </body>
 
