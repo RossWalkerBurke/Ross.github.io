@@ -50,6 +50,8 @@ var player = new GameObject("Player", "stick.png", 100);
 // this is an Array
 var gameobjects = [player, new GameObject("NPC", "stick2.png", 100)];
 
+//------------------------------------------------------------------------------------------------
+
 // Process keyboard input event
 function input(event) {
     // Take Input from the Player
@@ -92,6 +94,8 @@ function input(event) {
     }
     // console.log("Gamer Input :" + gamerInput.action);
 }
+
+//-----------------------------------------------------------------------------------------------------
 
 function update() {
     // Iterate through all GameObjects
@@ -164,6 +168,8 @@ function update() {
     }
 }
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
 // Total Frames
 var frames = 6;
 
@@ -194,17 +200,9 @@ function draw() {
     // console.log("Draw"); 
 
 
-    //triangle to avoid
-    context.beginPath();
-    context.moveTo(500,250);
-    context.lineTo(475,300);
-    context.lineTo(525,300);
-    context.fill();
- 
     for (i = 0; i < gameobjects.length; i++) {
      //   if (gameobjects[i].health > 0) {
-
-            
+   
             // Draw sprite frame
             context.drawImage(image,(image.width / 6) * currentFrame ,0 ,100 ,150 ,gameobjects[0].x, 150-gameobjects[0].y ,100 ,150);
             context.drawImage(image2,(image2.width / 6) * currentFrame, 0, 100 ,150 , 900, 150 , 100, 150);
@@ -237,6 +235,9 @@ function buttonOnClickRun()
     console.log("Right");
     gameobjects[0].x += 40;
     gameobjects[0].health = 100;
+    updateScore();
+
+    image = image
 }
 //Button Press JUMP
 function buttonOnClickJump()
@@ -246,15 +247,60 @@ function buttonOnClickJump()
     console.log("Up");
     gameobjects[0].y += 60;
     gameobjects[0].health = 100;
+    updateScore();
+    
+    // to change image to image3  (run to jump)    
+    image = image3
 }
-// to change image to image3  (run to jump)     
-if(buttonOnClickJump())
-{
-            image = image3
-}
+ 
 
-//notes: 
-//add code for if the player touches the spike gets reset
-//work on jump 
-//get the image to change
-//bug: if the player jumps they can keep jumping even past the boundry where the boundry code doesnt let the player back in
+ readJSONFromURL('./data/level.json', function (err, data) {
+     if (err != null) {
+       console.error(err);
+     } else {
+       var text = data["Pawns"];
+       console.log(text);
+       var text = data["Grunts"];
+       console.log(text);
+       var text = data["Boss"];
+       console.log(text);
+     }
+    });
+
+   // Reading File from a Server
+
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       var data = JSON.parse(this.responseText);
+       document.getElementById("NPC").innerHTML = data[0];
+     }
+   };
+   xmlhttp.open("GET", "./data/level.json", true);
+   xmlhttp.send();
+
+
+
+// Update the player score
+function updateScore() {
+  
+// this code is local storage on the clicks people do as score
+
+  var score= 1;
+  var current_score = localStorage.getItem('score');
+
+    score = parseInt(current_score) + 1;
+    console.log("Hello " + score);
+    document.getElementById("SCORE").innerHTML = score;
+
+    localStorage.setItem("score", score);
+
+/*   if (isNaN(current_score)) {
+    localStorage.setItem('score', 0);
+    document.getElementById("SCORE").innerHTML = " [ " + current_score + " ] ";
+  } else {
+    localStorage.setItem('score', parseInt(current_score) + 1);
+    document.getElementById("SCORE").innerHTML = " [ " + current_score + " ] ";
+  } */
+}
+    updateScore();

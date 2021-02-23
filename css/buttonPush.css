@@ -3,34 +3,32 @@ img{
 }
 
 .button {
-    background-color: #dcf8ff;
+    background-color: black;
     border: none;
-    box-shadow: 0 9px lightblue;
+    box-shadow: 0 9px gray;
     padding: 30px;
     text-align: center;
     font-size: 28px;
 }
 
 .button:hover {
-    background-color: #dcf8ff;
+    background-color: black;
 }
 
 .button:active {
-    box-shadow: 0 5px lightblue;
+    box-shadow: 0 5px gray;
     transform: translateY(5px);
 }
 /* the coloutr of the buttons word  */
 .red {
-    color: #279eff;
+    color: green;
 }
 .blue {
-    color: #279eff;
+    color: green;
 }
 /* .green {
     color: #00FF00;
 }
-
-
 
 .yellow {
     color: #FFFF00;
