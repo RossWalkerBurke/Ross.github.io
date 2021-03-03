@@ -252,9 +252,25 @@ function buttonOnClickJump()
     // to change image to image3  (run to jump)    
     image = image3
 }
- 
 
- readJSONFromURL('./data/level.json', function (err, data) {
+var readJSONFromURL = function (url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+
+    xhr.onload = function () {
+      var status = xhr.status;
+      if (status == 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status);
+      }
+    };
+
+    xhr.send();
+  };
+
+ readJSONFromURL('./data/level.json', function (err, data){
      if (err != null) {
        console.error(err);
      } else {
@@ -263,7 +279,7 @@ function buttonOnClickJump()
        var text = data["Grunts"];
        console.log(text);
        var text = data["Boss"];
-       console.log(text);
+       console.log(text); 
      }
     });
 
@@ -272,8 +288,8 @@ function buttonOnClickJump()
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = function () {
      if (this.readyState == 4 && this.status == 200) {
-       var data = JSON.parse(this.responseText);
-       document.getElementById("NPC").innerHTML = data[0];
+       var data = JSON.parse(xmlhttp.responseText);
+       document.getElementById("NPC").innerHTML = data;
      }
    };
    xmlhttp.open("GET", "./data/level.json", true);
@@ -294,13 +310,6 @@ function updateScore() {
     document.getElementById("SCORE").innerHTML = score;
 
     localStorage.setItem("score", score);
-
-/*   if (isNaN(current_score)) {
-    localStorage.setItem('score', 0);
-    document.getElementById("SCORE").innerHTML = " [ " + current_score + " ] ";
-  } else {
-    localStorage.setItem('score', parseInt(current_score) + 1);
-    document.getElementById("SCORE").innerHTML = " [ " + current_score + " ] ";
-  } */
 }
+
     updateScore();
